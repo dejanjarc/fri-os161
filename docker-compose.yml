@@ -1,0 +1,20 @@
+# Docker Compose file for OS/161
+# Usage: this file is used to build and run the OS/161 container.
+
+# To build the container, use the command: docker-compose build
+# To run the container, use the command: docker-compose up -d
+# To stop the container, use the command: docker-compose down
+# To connect to the container, use the command: 
+#       docker exec -it fri-os161 /bin/bash 
+# OR    docker attach fri-os161
+
+services:
+  fri-os161:
+    container_name: fri-os161
+    image: dejanjarc/fri-os161
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+   
