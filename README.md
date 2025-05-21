@@ -200,4 +200,4 @@ If you want to rebuild the OS/161 kernel from source, follow these steps:
 ## Notes
 
 - Ensure Docker and Docker Compose are installed before proceeding.
-- If there are any bugs you wish to report, [open an issue or do a pull request with your solution](https://github.com/dejanjarc/fri-os161).
+- If there are any bugs you wish to report, [open an issue](https://github.com/dejanjarc/fri-os161/issues) or do a [pull request with your solution](https://github.com/dejanjarc/fri-os161/pulls).
