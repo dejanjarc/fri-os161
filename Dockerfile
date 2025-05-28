@@ -93,6 +93,10 @@ RUN cd "${OS_161_ROOT}" && \
     mv ".gdbinit.root" "${OS_161_INSTALL}/.gdbinit"  && \
     rm "build-kernel.sh"
 
+# Create symbolic links for OS/161 tools
+RUN cd "${OS_161_ROOT}/tools/bin" && \
+    sh -c 'for i in mips-*; do ln -s $i os161-`echo $i | cut -d- -f4-`; done'
+
 # Set working directory
 WORKDIR ${USER_HOME}
 
