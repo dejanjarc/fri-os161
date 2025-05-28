@@ -22,6 +22,7 @@ RUN apt-get --yes update && \
         libmpc-dev \
         libmpfr-dev \
         libncurses-dev \
+        nano \
         sudo 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
