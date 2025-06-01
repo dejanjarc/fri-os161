@@ -140,52 +140,58 @@ Username = **os161**, password = **os161**
 To run OS/161 inside the container:
 
 1. Change to the root directory:
-  ```bash
-  cd ~/root
-  ```
+    ```bash
+    cd ~/root
+    ```
 2. Start System/161 with the installed kernel:
-  ```bash
-  sys161 kernel
-  ```
-> The `sys161.conf` config file is needed to run System/161. Luckly, it is already set up for this environment. 
+    ```bash
+    sys161 kernel
+    ```
+    > The `sys161.conf` config file is needed to run System/161. Luckly, it is already set up for this environment. 
 
 3. To shut down System/161 you can 
   - enter **`q`** into the menu or
   - run the **`poweroff`** utility with `p /sbin/poweroff`. 
 
-### Building the Kernel
+### Building OS/161
 
 If you want to rebuild the OS/161 kernel from source, follow these steps:
 
 1. Change to the OS/161 source directory:
-  ```bash
-  cd ~/src
-  ```
+    ```bash
+    cd ~/src
+    ```
 2. Configure the source tree (run this if you haven't already, or if you moved the source tree):
-  ```bash
-  ./configure --ostree=$HOME/root
-  ```
-3. Configure the kernel (replace `DUMBVM` with your configuration if needed):
-  ```bash
-  cd kern/conf
-  ./config DUMBVM
-  ```
-4. Change to the kernel build directory:
-  ```bash
-  cd ../compile/DUMBVM
-  ```
-5. Build and install the kernel:
-  ```bash
-  bmake depend
-  bmake
-  bmake install
-  ```
-  This will build and install the kernel as `~/root/kernel-DUMBVM`. You can now run this kernel following [the previous](#running-os161) step.
+    ```bash
+    ./configure --ostree=$HOME/root
+    ```
 
-- To clean the build directory before rebuilding:
-  ```bash
-  bmake clean
-  ```
+3. Build the userland:
+    ```bash
+    cd ~/src
+    bmake
+    bmake install
+    ```
+    > You can compile a single program by typing `bmake` in its source directory and then `bmake install` to install it in its place at `~/root`.
+
+    > For other `bmake` rules (e.g. `bmake depend`), see [OS/161 Building](http://www.os161.org/resources/building.html).
+
+4. Configure the kernel (replace `DUMBVM` with your configuration if needed):
+    ```bash
+    cd kern/conf
+    ./config DUMBVM
+    ```
+5. Change to the kernel build directory:
+    ```bash
+    cd ../compile/DUMBVM
+    ```
+6. Build and install the kernel:
+    ```bash
+    bmake depend
+    bmake
+    bmake install
+    ```
+  This will build and install the kernel as `~/root/kernel-DUMBVM`. You can now run this kernel following [the previous](#running-os161) step.
 
 > For more details, see the [OS/161 Building](http://www.os161.org/resources/building.html) and [Running](http://www.os161.org/resources/running.html) documentation.
 
